@@ -1,0 +1,165 @@
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { 
+  Terminal, 
+  Container, 
+  Settings, 
+  Cloud, 
+  GitBranch, 
+  Github,
+  Server,
+  Cpu
+} from 'lucide-react';
+
+const Tools: React.FC = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, threshold: 0.3 });
+
+  const tools = [
+    {
+      name: 'Linux',
+      icon: Terminal,
+      color: 'from-orange-400 to-red-500',
+      description: 'System Administration',
+      category: 'OS',
+    },
+    {
+      name: 'Docker',
+      icon: Container,
+      color: 'from-blue-400 to-cyan-500',
+      description: 'Containerization',
+      category: 'DevOps',
+    },
+    {
+      name: 'Jenkins',
+      icon: Settings,
+      color: 'from-red-400 to-pink-500',
+      description: 'CI/CD Pipeline',
+      category: 'Automation',
+    },
+    {
+      name: 'AWS',
+      icon: Cloud,
+      color: 'from-yellow-400 to-orange-500',
+      description: 'Cloud Services',
+      category: 'Cloud',
+    },
+    {
+      name: 'Git',
+      icon: GitBranch,
+      color: 'from-green-400 to-emerald-500',
+      description: 'Version Control',
+      category: 'VCS',
+    },
+    {
+      name: 'GitHub',
+      icon: Github,
+      color: 'from-purple-400 to-indigo-500',
+      description: 'Code Repository',
+      category: 'Platform',
+    },
+    {
+      name: 'Kubernetes',
+      icon: Server,
+      color: 'from-blue-500 to-purple-500',
+      description: 'Container Orchestration',
+      category: 'DevOps',
+    },
+    {
+      name: 'Terraform',
+      icon: Cpu,
+      color: 'from-indigo-400 to-blue-500',
+      description: 'Infrastructure as Code',
+      category: 'IaC',
+    },
+  ];
+
+  return (
+    <section id="tools" className="py-20 bg-slate-800/50 dark:bg-slate-800/50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+            Tools I <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Use</span>
+          </h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full"></div>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {tools.map((tool, index) => (
+            <motion.div
+              key={tool.name}
+              className="group relative"
+              initial={{ opacity: 0, y: 50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              whileHover={{ scale: 1.05, rotateY: 5 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <div className="bg-slate-900/60 dark:bg-slate-900/60 p-8 rounded-2xl backdrop-blur-sm border border-slate-700/50 group-hover:border-blue-500/50 transition-all duration-300 h-full relative overflow-hidden">
+                <div className="text-center relative z-10">
+                  <motion.div
+                    className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br ${tool.color} flex items-center justify-center shadow-lg`}
+                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <tool.icon className="w-8 h-8 text-white" />
+                  </motion.div>
+                  
+                  <h3 className="text-xl font-bold text-white mb-2">{tool.name}</h3>
+                  <p className="text-slate-400 text-sm mb-2">{tool.description}</p>
+                  
+                  <motion.span
+                    className={`inline-block px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${tool.color} text-white`}
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    {tool.category}
+                  </motion.span>
+                </div>
+                
+                {/* Animated Background */}
+                <motion.div
+                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{
+                    background: `radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 70%)`,
+                  }}
+                  initial={{ scale: 0 }}
+                  whileHover={{ scale: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+                
+                {/* Floating Particles */}
+                {[...Array(3)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute w-1 h-1 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100"
+                    style={{
+                      left: `${20 + i * 30}%`,
+                      top: `${20 + i * 20}%`,
+                    }}
+                    animate={{
+                      y: [-10, 10, -10],
+                      opacity: [0, 1, 0],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: i * 0.2,
+                    }}
+                  />
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Tools;
