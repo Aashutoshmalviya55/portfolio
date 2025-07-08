@@ -98,62 +98,105 @@ const Tools: React.FC = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              whileHover={{ scale: 1.05, rotateY: 5 }}
+              whileHover={{ 
+                scale: 1.05, 
+                rotateY: 5,
+                y: -10,
+                transition: { duration: 0.3 }
+              }}
               whileTap={{ scale: 0.95 }}
             >
-              <div className="bg-slate-900/60 dark:bg-slate-900/60 p-8 rounded-2xl backdrop-blur-sm border border-slate-700/50 group-hover:border-blue-500/50 transition-all duration-300 h-full relative overflow-hidden">
+              <motion.div 
+                className="bg-slate-900/60 dark:bg-slate-900/60 p-8 rounded-2xl backdrop-blur-sm border border-slate-700/50 group-hover:border-blue-500/50 transition-all duration-300 h-full relative overflow-hidden"
+                animate={{
+                  y: [0, -3, 0],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  delay: index * 0.3,
+                  ease: "easeInOut"
+                }}
+              >
                 <div className="text-center relative z-10">
                   <motion.div
                     className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br ${tool.color} flex items-center justify-center shadow-lg`}
-                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    whileHover={{ 
+                      rotate: 360, 
+                      scale: 1.1,
+                      boxShadow: '0 15px 35px rgba(59, 130, 246, 0.4)'
+                    }}
                     transition={{ duration: 0.5 }}
                   >
                     <tool.icon className="w-8 h-8 text-white" />
                   </motion.div>
                   
-                  <h3 className="text-xl font-bold text-white mb-2">{tool.name}</h3>
+                  <motion.h3 
+                    className="text-xl font-bold text-white mb-2"
+                    whileHover={{ color: '#60a5fa' }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {tool.name}
+                  </motion.h3>
                   <p className="text-slate-400 text-sm mb-2">{tool.description}</p>
                   
                   <motion.span
                     className={`inline-block px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${tool.color} text-white`}
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ 
+                      scale: 1.05,
+                      boxShadow: '0 5px 15px rgba(59, 130, 246, 0.3)'
+                    }}
                   >
                     {tool.category}
                   </motion.span>
                 </div>
                 
-                {/* Animated Background */}
+                {/* Enhanced Animated Background */}
                 <motion.div
                   className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   style={{
-                    background: `radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 70%)`,
+                    background: `radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 70%)`,
                   }}
                   initial={{ scale: 0 }}
                   whileHover={{ scale: 1 }}
                   transition={{ duration: 0.3 }}
                 />
                 
-                {/* Floating Particles */}
-                {[...Array(3)].map((_, i) => (
+                {/* Enhanced Floating Particles */}
+                {[...Array(5)].map((_, i) => (
                   <motion.div
                     key={i}
-                    className="absolute w-1 h-1 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100"
+                    className="absolute w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-0 group-hover:opacity-100"
                     style={{
-                      left: `${20 + i * 30}%`,
-                      top: `${20 + i * 20}%`,
+                      left: `${15 + i * 20}%`,
+                      top: `${15 + i * 15}%`,
                     }}
                     animate={{
-                      y: [-10, 10, -10],
+                      y: [-15, 15, -15],
+                      x: [-5, 5, -5],
                       opacity: [0, 1, 0],
+                      scale: [0, 1, 0],
                     }}
                     transition={{
-                      duration: 2,
+                      duration: 3,
                       repeat: Infinity,
-                      delay: i * 0.2,
+                      delay: i * 0.3,
+                      ease: "easeInOut"
                     }}
                   />
                 ))}
-              </div>
+                
+                {/* Glowing Border Effect */}
+                <motion.div
+                  className="absolute inset-0 rounded-2xl border-2 border-transparent"
+                  style={{
+                    background: `linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.3), transparent)`,
+                  }}
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                />
+              </motion.div>
             </motion.div>
           ))}
         </div>

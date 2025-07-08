@@ -61,41 +61,90 @@ const Languages: React.FC = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ 
+                scale: 1.05,
+                y: -10,
+                transition: { duration: 0.3 }
+              }}
               whileTap={{ scale: 0.95 }}
             >
-              <div className="bg-slate-900/60 dark:bg-slate-900/60 p-8 rounded-2xl backdrop-blur-sm border border-slate-700/50 group-hover:border-blue-500/50 transition-all duration-300 h-full">
+              <motion.div 
+                className="bg-slate-900/60 dark:bg-slate-900/60 p-8 rounded-2xl backdrop-blur-sm border border-slate-700/50 group-hover:border-blue-500/50 transition-all duration-300 h-full"
+                animate={{
+                  y: [0, -5, 0],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  delay: index * 0.5,
+                  ease: "easeInOut"
+                }}
+              >
                 <div className="text-center">
                   <motion.div
                     className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br ${language.color} flex items-center justify-center`}
-                    whileHover={{ rotate: 360 }}
+                    whileHover={{ 
+                      rotate: 360,
+                      scale: 1.1,
+                      boxShadow: '0 10px 30px rgba(59, 130, 246, 0.3)'
+                    }}
                     transition={{ duration: 0.5 }}
                   >
                     <language.icon className="w-8 h-8 text-white" />
                   </motion.div>
                   
-                  <h3 className="text-xl font-bold text-white mb-2">{language.name}</h3>
+                  <motion.h3 
+                    className="text-xl font-bold text-white mb-2"
+                    whileHover={{ color: '#60a5fa' }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {language.name}
+                  </motion.h3>
                   <p className="text-slate-400 text-sm mb-4">{language.description}</p>
                   
-                  {/* Progress Bar */}
-                  <div className="w-full bg-slate-700 rounded-full h-2 mb-2">
+                  {/* Enhanced Progress Bar */}
+                  <div className="w-full bg-slate-700 rounded-full h-3 mb-2 overflow-hidden">
                     <motion.div
-                      className={`h-2 bg-gradient-to-r ${language.color} rounded-full`}
+                      className={`h-3 bg-gradient-to-r ${language.color} rounded-full relative`}
                       initial={{ width: 0 }}
                       animate={isInView ? { width: `${language.level}%` } : { width: 0 }}
-                      transition={{ duration: 1, delay: 0.5 + index * 0.1 }}
-                    />
+                      transition={{ 
+                        duration: 1.5, 
+                        delay: 0.5 + index * 0.1,
+                        ease: "easeOut"
+                      }}
+                    >
+                      <motion.div
+                        className="absolute inset-0 bg-white/20"
+                        animate={{
+                          x: ['-100%', '100%'],
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          delay: 1 + index * 0.1,
+                          ease: "linear"
+                        }}
+                      />
+                    </motion.div>
                   </div>
-                  <span className="text-xs text-slate-500">{language.level}% Proficiency</span>
+                  <motion.span 
+                    className="text-xs text-slate-500"
+                    initial={{ opacity: 0 }}
+                    animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+                    transition={{ duration: 0.5, delay: 1.5 + index * 0.1 }}
+                  >
+                    {language.level}% Proficiency
+                  </motion.span>
                 </div>
                 
-                {/* Hover Effect */}
+                {/* Enhanced Hover Effect */}
                 <motion.div
                   className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 1 }}
                 />
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>
