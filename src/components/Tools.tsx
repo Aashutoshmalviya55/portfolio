@@ -22,6 +22,7 @@ const Tools: React.FC = () => {
       color: 'from-orange-400 to-red-500',
       description: 'System Administration',
       category: 'OS',
+      proficiency: 90,
     },
     {
       name: 'Docker',
@@ -29,6 +30,7 @@ const Tools: React.FC = () => {
       color: 'from-blue-400 to-cyan-500',
       description: 'Containerization',
       category: 'DevOps',
+      proficiency: 85,
     },
     {
       name: 'Jenkins',
@@ -36,6 +38,7 @@ const Tools: React.FC = () => {
       color: 'from-blue-400 to-purple-500',
       description: 'CI/CD Pipeline',
       category: 'Automation',
+      proficiency: 80,
     },
     {
       name: 'AWS',
@@ -43,6 +46,7 @@ const Tools: React.FC = () => {
       color: 'from-yellow-400 to-orange-500',
       description: 'Cloud Services',
       category: 'Cloud',
+      proficiency: 78,
     },
     {
       name: 'Git',
@@ -50,6 +54,7 @@ const Tools: React.FC = () => {
       color: 'from-green-400 to-emerald-500',
       description: 'Version Control',
       category: 'VCS',
+      proficiency: 88,
     },
     {
       name: 'GitHub',
@@ -57,6 +62,7 @@ const Tools: React.FC = () => {
       color: 'from-purple-400 to-indigo-500',
       description: 'Code Repository',
       category: 'Platform',
+      proficiency: 87,
     },
     {
       name: 'Kubernetes',
@@ -64,6 +70,7 @@ const Tools: React.FC = () => {
       color: 'from-blue-500 to-purple-500',
       description: 'Container Orchestration',
       category: 'DevOps',
+      proficiency: 70,
     },
     {
       name: 'Terraform',
@@ -71,6 +78,7 @@ const Tools: React.FC = () => {
       color: 'from-indigo-400 to-blue-500',
       description: 'Infrastructure as Code',
       category: 'IaC',
+      proficiency: 65,
     },
   ];
 
@@ -139,6 +147,40 @@ const Tools: React.FC = () => {
                     {tool.name}
                   </motion.h3>
                   <p className="text-slate-400 text-sm mb-2">{tool.description}</p>
+                  {/* Proficiency Progress Bar */}
+                  <div className="w-full bg-slate-700 rounded-full h-3 mb-2 overflow-hidden">
+                    <motion.div
+                      className={`h-3 bg-gradient-to-r ${tool.color} rounded-full relative`}
+                      initial={{ width: 0 }}
+                      animate={isInView ? { width: `${tool.proficiency}%` } : { width: 0 }}
+                      transition={{ 
+                        duration: 1.5, 
+                        delay: 0.5 + index * 0.1,
+                        ease: 'easeOut'
+                      }}
+                    >
+                      <motion.div
+                        className="absolute inset-0 bg-white/20"
+                        animate={{
+                          x: ['-100%', '100%'],
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          delay: 1 + index * 0.1,
+                          ease: 'linear'
+                        }}
+                      />
+                    </motion.div>
+                  </div>
+                  <motion.span 
+                    className="text-xs text-slate-500 block mb-2"
+                    initial={{ opacity: 0 }}
+                    animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+                    transition={{ duration: 0.5, delay: 1.5 + index * 0.1 }}
+                  >
+                    {tool.proficiency}% Proficiency
+                  </motion.span>
                   
                   <motion.span
                     className={`inline-block px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${tool.color} text-white`}

@@ -55,41 +55,25 @@ const Projects: React.FC = () => {
       github: 'https://github.com/Aashutoshmalviya55/Devops01',
       demo: 'https://your-demo-link.com',
     },
-    {
-      title: 'JavaScript Project',
-      description: 'A showcase of modern JavaScript techniques and best practices, demonstrating dynamic UI updates, API integration, and responsive design.',
-      image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['JavaScript', 'HTML', 'CSS'],
-      features: [
-        'Dynamic UI updates',
-        'API integration',
-        'Responsive design',
-        'Clean and maintainable code'
-      ],
-      icon: Code,
-      color: 'from-yellow-400 to-orange-500',
-      github: 'https://github.com/Aashutoshmalviya55/js-project',
-      demo: 'https://your-demo-link.com',
-    },
   ];
 
   return (
-    <section id="projects" className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-14">
+      <div className="max-w-6xl mx-auto px-2 sm:px-4 lg:px-6 w-full">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
             My <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Projects</span>
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full"></div>
+          <div className="w-16 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full"></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -101,7 +85,7 @@ const Projects: React.FC = () => {
             >
               <div className="bg-slate-900/60 dark:bg-slate-900/60 rounded-2xl backdrop-blur-sm border border-slate-700/50 group-hover:border-blue-500/50 transition-all duration-300 overflow-hidden h-full">
                 {/* Project Image */}
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-36 overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
@@ -111,25 +95,25 @@ const Projects: React.FC = () => {
                   
                   {/* Project Icon */}
                   <motion.div
-                    className={`absolute top-4 right-4 w-12 h-12 rounded-full bg-gradient-to-br ${project.color} flex items-center justify-center shadow-lg`}
+                    className={`absolute top-3 right-3 w-9 h-9 rounded-full bg-gradient-to-br ${project.color} flex items-center justify-center shadow-lg`}
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.5 }}
                   >
-                    <project.icon className="w-6 h-6 text-white" />
+                    <project.icon className="w-5 h-5 text-white" />
                   </motion.div>
                 </div>
 
                 {/* Project Content */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-3">{project.title}</h3>
-                  <p className="text-slate-400 mb-4 text-sm leading-relaxed">{project.description}</p>
+                <div className="p-4">
+                  <h3 className="text-lg font-bold text-white mb-2">{project.title}</h3>
+                  <p className="text-slate-400 mb-3 text-xs leading-relaxed">{project.description}</p>
                   
                   {/* Technologies */}
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-1 mb-3">
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 bg-slate-800/80 text-blue-400 rounded-full text-xs font-medium border border-slate-700/50"
+                        className="px-2 py-0.5 bg-slate-800/80 text-blue-400 rounded-full text-xs font-medium border border-slate-700/50"
                       >
                         {tech}
                       </span>
@@ -137,8 +121,8 @@ const Projects: React.FC = () => {
                   </div>
 
                   {/* Features */}
-                  <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-white mb-2">Key Features:</h4>
+                  <div className="mb-4">
+                    <h4 className="text-xs font-semibold text-white mb-1">Key Features:</h4>
                     <ul className="text-slate-400 text-xs space-y-1">
                       {project.features.map((feature, i) => (
                         <li key={i} className="flex items-center">
@@ -150,16 +134,16 @@ const Projects: React.FC = () => {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex gap-3">
+                  <div className="flex gap-2">
                     <motion.a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 bg-slate-800/80 hover:bg-slate-700/80 text-white rounded-lg transition-all duration-300 text-sm font-medium border border-slate-700/50 hover:border-blue-500/50"
+                      className="flex items-center gap-2 px-3 py-1.5 bg-slate-800/80 hover:bg-slate-700/80 text-white rounded-lg transition-all duration-300 text-xs font-medium border border-slate-700/50 hover:border-blue-500/50"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      <Github size={16} />
+                      <Github size={14} />
                       Code
                     </motion.a>
                   </div>
