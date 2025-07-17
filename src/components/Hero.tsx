@@ -52,7 +52,12 @@ const Hero: React.FC = () => {
           {/* Right: Text Content */}
           <div className="z-10 flex flex-col items-center lg:items-start text-center lg:text-left justify-center h-full">
             <h1
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-yellow-400 via-pink-500 to-indigo-500 bg-clip-text text-transparent"
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 bg-clip-text text-transparent"
+              style={{
+                backgroundImage: 'linear-gradient(to right, #ff4e50, #f9d423)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
             >
               Aashutosh Malviya
             </h1>
@@ -79,16 +84,30 @@ const Hero: React.FC = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
               <motion.button
-                className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg font-semibold hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl"
-                whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(59, 130, 246, 0.3)' }}
+                className="px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+                style={{
+                  background: 'linear-gradient(to right, #43e97b, #38f9d7)',
+                  color: '#fff',
+                }}
+                whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(56, 249, 215, 0.3)' }}
                 whileTap={{ scale: 0.95 }}
                 onClick={scrollToAbout}
               >
                 Explore My Work
               </motion.button>
               <motion.button
-                className="px-8 py-3 border-2 border-blue-500 text-blue-500 rounded-lg font-semibold hover:bg-blue-500 hover:text-white transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
+                className="px-8 py-3 rounded-lg font-semibold border-2 transition-all duration-300"
+                style={{
+                  border: '2px solid #38f9d7',
+                  color: '#38f9d7',
+                  boxShadow: '0 0 0 0 #38f9d7',
+                }}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: '0 0 16px 4px #38f9d7',
+                  backgroundColor: 'rgba(56, 249, 215, 0.1)',
+                  color: '#fff',
+                }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
               >

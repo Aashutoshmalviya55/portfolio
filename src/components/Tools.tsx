@@ -33,7 +33,7 @@ const Tools: React.FC = () => {
     {
       name: 'Jenkins',
       icon: Settings,
-      color: 'from-red-400 to-pink-500',
+      color: 'from-blue-400 to-purple-500',
       description: 'CI/CD Pipeline',
       category: 'Automation',
     },

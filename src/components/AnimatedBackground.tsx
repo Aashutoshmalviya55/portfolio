@@ -4,7 +4,25 @@ import { motion } from 'framer-motion';
 const AnimatedBackground: React.FC = () => {
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0f172a] via-[#312e81] to-[#1e293b] dark:from-[#0f172a] dark:via-[#312e81] dark:to-[#1e293b]" />
+      {/* Main animated gradient background */}
+      <motion.div
+        className="absolute inset-0 w-full h-full"
+        style={{
+          background: 'linear-gradient(to right, #0f0c29, #302b63, #24243e)',
+        }}
+        animate={{
+          backgroundPosition: [
+            '0% 50%',
+            '100% 50%',
+            '0% 50%'
+          ],
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: 'linear',
+        }}
+      />
       {/* Floating Blobs */}
       <motion.div
         className="absolute top-1/4 left-1/4 w-72 h-72 bg-[#a78bfa]/20 rounded-full blur-3xl"
@@ -16,7 +34,7 @@ const AnimatedBackground: React.FC = () => {
         transition={{
           duration: 20,
           repeat: Infinity,
-          ease: "easeInOut",
+          ease: 'easeInOut',
         }}
       />
       <motion.div
@@ -29,7 +47,7 @@ const AnimatedBackground: React.FC = () => {
         transition={{
           duration: 25,
           repeat: Infinity,
-          ease: "easeInOut",
+          ease: 'easeInOut',
         }}
       />
       <motion.div
@@ -42,11 +60,33 @@ const AnimatedBackground: React.FC = () => {
         transition={{
           duration: 30,
           repeat: Infinity,
-          ease: "easeInOut",
+          ease: 'easeInOut',
         }}
       />
-      {/* Animated Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#38bdf8]/10 to-transparent animate-pulse" />
+      {/* Animated Stars */}
+      {[...Array(50)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute rounded-full bg-white opacity-70"
+          style={{
+            width: `${Math.random() * 2 + 1}px`,
+            height: `${Math.random() * 2 + 1}px`,
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+            filter: 'blur(0.5px)'
+          }}
+          animate={{
+            opacity: [0.5, 1, 0.5],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: Math.random() * 2 + 1,
+            repeat: Infinity,
+            repeatType: 'reverse',
+            delay: Math.random() * 2
+          }}
+        />
+      ))}
     </div>
   );
 };

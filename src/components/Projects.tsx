@@ -8,19 +8,35 @@ const Projects: React.FC = () => {
 
   const projects = [
     {
-      title: 'Linux Command Runner Dashboard',
-      description: 'A comprehensive Python + Streamlit application that provides a user-friendly interface for executing Linux commands with real-time output, integrated messaging services, and command history tracking.',
+      title: 'Python Automation Project',
+      description: 'A collection of Python scripts and tools for automating various tasks, demonstrating practical automation solutions and scripting techniques.',
       image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['Python', 'Streamlit', 'Linux', 'APIs'],
+      technologies: ['Python', 'Automation', 'Scripting'],
       features: [
-        'Real-time command execution',
-        'Interactive dashboard',
-        'Messaging integration',
-        'Command history tracking'
+        'Task automation scripts',
+        'Menu-driven utilities',
+        'Practical Python examples',
+        'Easy to extend and customize'
       ],
       icon: Server,
       color: 'from-green-400 to-blue-500',
-      github: 'https://github.com/Aashutoshmalviya55',
+      github: 'https://github.com/Aashutoshmalviya55/python_automation',
+      demo: 'https://your-demo-link.com',
+    },
+    {
+      title: 'JavaScript Automation',
+      description: 'A collection of JavaScript scripts and tools for automating browser and web tasks, demonstrating practical automation solutions and scripting techniques.',
+      image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800',
+      technologies: ['JavaScript', 'Automation', 'Scripting'],
+      features: [
+        'Browser automation scripts',
+        'Web scraping utilities',
+        'Practical JavaScript examples',
+        'Easy to extend and customize'
+      ],
+      icon: Code,
+      color: 'from-yellow-400 to-green-500',
+      github: 'https://github.com/Aashutoshmalviya55/javascipt_automation',
       demo: 'https://your-demo-link.com',
     },
     {
@@ -35,24 +51,24 @@ const Projects: React.FC = () => {
         'Pipeline visualization'
       ],
       icon: Code,
-      color: 'from-purple-400 to-pink-500',
-      github: 'https://github.com/Aashutoshmalviya55',
+      color: 'from-purple-400 to-blue-500',
+      github: 'https://github.com/Aashutoshmalviya55/Devops01',
       demo: 'https://your-demo-link.com',
     },
     {
-      title: 'Cloud Infrastructure Manager',
-      description: 'Infrastructure as Code solution using Terraform and AWS services. Automates the provisioning and management of cloud resources with proper monitoring and cost optimization.',
+      title: 'JavaScript Project',
+      description: 'A showcase of modern JavaScript techniques and best practices, demonstrating dynamic UI updates, API integration, and responsive design.',
       image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['AWS', 'Terraform', 'Python', 'CloudWatch'],
+      technologies: ['JavaScript', 'HTML', 'CSS'],
       features: [
-        'Infrastructure as Code',
-        'Auto-scaling capabilities',
-        'Cost optimization',
-        'Monitoring & alerting'
+        'Dynamic UI updates',
+        'API integration',
+        'Responsive design',
+        'Clean and maintainable code'
       ],
-      icon: Database,
+      icon: Code,
       color: 'from-yellow-400 to-orange-500',
-      github: 'https://github.com/Aashutoshmalviya55',
+      github: 'https://github.com/Aashutoshmalviya55/js-project',
       demo: 'https://your-demo-link.com',
     },
   ];
@@ -145,18 +161,6 @@ const Projects: React.FC = () => {
                     >
                       <Github size={16} />
                       Code
-                    </motion.a>
-                    
-                    <motion.a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex items-center gap-2 px-4 py-2 bg-gradient-to-r ${project.color} text-white rounded-lg transition-all duration-300 text-sm font-medium hover:shadow-lg`}
-                      whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(59, 130, 246, 0.3)' }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Play size={16} />
-                      Demo
                     </motion.a>
                   </div>
                 </div>
