@@ -55,6 +55,42 @@ const Projects: React.FC = () => {
       github: 'https://github.com/Aashutoshmalviya55/Devops01',
       demo: 'https://your-demo-link.com',
     },
+    {
+      title: 'Flask Socket App with CI/CD & Kubernetes',
+      description: 'A real-time web application built with Python Flask and the socket library, featuring a complete CI/CD pipeline using Jenkins, Docker, Docker Hub, and Kubernetes for scalable deployment.',
+      image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800',
+      technologies: ['Python', 'Flask', 'Socket', 'Docker', 'Jenkins', 'Docker Hub', 'Kubernetes'],
+      features: [
+        'Real-time communication with Flask & Socket',
+        'Dockerized application with Dockerfile',
+        'CI/CD pipeline using Jenkins',
+        'Automated builds and push to Docker Hub',
+        'Kubernetes deployment for scalability',
+        'Sample app.py, Dockerfile, Jenkinsfile included',
+      ],
+      icon: Database, // Using Database icon for backend/app focus
+      color: 'from-blue-500 to-green-400',
+      github: 'https://github.com/Aashutoshmalviya55/kubernetes-01-',
+      demo: 'https://your-demo-link.com',
+    },
+    {
+      title: 'Microservices System with Flask, PostgreSQL & Redis',
+      description: 'A hands-on microservices-based system featuring user registration and fast data access, built with Python Flask, PostgreSQL for storage, Redis for caching, and orchestrated using Docker Compose.',
+      image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800',
+      technologies: ['Python', 'Flask', 'PostgreSQL', 'Redis', 'Docker Compose'],
+      features: [
+        'User registration API with Flask',
+        'Data storage in PostgreSQL',
+        'Fast access with Redis cache',
+        'Service orchestration using Docker Compose',
+        'Separation of concerns via microservices',
+        'Sample docker-compose.yml and init.sql included',
+      ],
+      icon: Server, // Using Server icon for backend/microservices
+      color: 'from-green-500 to-yellow-400',
+      github: 'https://github.com/Aashutoshmalviya55/Devops2-microservices',
+      demo: 'https://your-demo-link.com',
+    },
   ];
 
   return (

@@ -29,10 +29,10 @@ const Languages: React.FC = () => {
       level: 80,
     },
     {
-      name: 'MongoDB',
+      name: 'DBMS',
       icon: Database,
       color: 'from-purple-400 to-pink-500',
-      description: 'NoSQL Database',
+      description: 'Database Management',
       level: 70,
     },
   ];
@@ -101,6 +101,7 @@ const Languages: React.FC = () => {
                     {language.name}
                   </motion.h3>
                   <p className="text-slate-400 text-sm mb-4">{language.description}</p>
+                  
                   {/* Enhanced Progress Bar */}
                   <div className="w-full bg-slate-700 rounded-full h-3 mb-2 overflow-hidden">
                     <motion.div
@@ -135,7 +136,6 @@ const Languages: React.FC = () => {
                   >
                     {language.level}% Proficiency
                   </motion.span>
-                  
                 </div>
                 
                 {/* Enhanced Hover Effect */}

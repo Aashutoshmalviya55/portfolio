@@ -11,7 +11,7 @@ import Contact from './components/Contact';
 function App() {
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-slate-900 dark:bg-slate-900 text-white font-['Poppins',sans-serif] overflow-x-hidden">
+      <div className="min-h-screen bg-black text-white font-['Poppins',sans-serif] overflow-x-hidden">
         <Navbar />
         <main>
           <Hero />
